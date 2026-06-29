@@ -1,7 +1,42 @@
 ######Mine Bank########
 
 balance = 1000
+seccond_account = 500
 history = []
+
+def transfer(balance, seccond_account, history):
+   try:
+      value = float(input("value to transfer: "))
+
+      if value  <= 0:
+         print("please try a positive number!")
+         return balance
+      
+      if value <= balance:
+         balance -= value
+
+         seccond_account += value
+
+         history.append(f"New transfer from 'Main account' to 'Seccond account': +${value:.2f}")
+
+         print("\nTransfer completed")
+         print(f"Main account current balance: ${balance:.2f}")
+         print(f"seccond account balance: ${seccond_account:.2f}")
+
+         return balance, seccond_account
+   
+      else:
+         print("inssuficient funds!!!")
+
+         return balance, seccond_account
+      
+   except ValueError:
+      print("Please type a valid number")
+
+      return balance, seccond_account
+
+
+
 
 def Show_Balance(balance):
    print(f"Current balance:  ${balance:.2f}")
@@ -64,7 +99,8 @@ while True:
     print("2 - Deposit")
     print("3 - Withdraw")
     print("4 - Transaction history")
-    print("5 - Exit")
+    print("5 - transfer")
+    print("6 - Exit")
 
     option = input("Choose: ")
 
@@ -81,6 +117,9 @@ while True:
        Show_History(history)
 
     elif option == "5":
+        balance, seccond_account = transfer(balance, seccond_account, history)
+
+    elif option == "6":
        print("End of transaction")
     else:
         print("Error...")
