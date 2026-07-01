@@ -2,7 +2,26 @@
 
 balance = 1000
 seccond_account = 500
+password = "123"
 history = []
+
+
+
+def type_word(password):
+  
+  autentication = False 
+
+  while not autentication: 
+     word = str(input("Password: "))
+
+     if word == password:
+        autentication = True   
+        print("Welcome back sir!!!!!!")
+
+     else:
+        print("Incorrect password!!!!")
+
+        
 
 def transfer(balance, seccond_account, history):
    try:
@@ -75,7 +94,7 @@ def Withdraw(balance, history):
         else:
             print("Insufficient funds")
 
-        return balance
+        
 
     except ValueError:
         print("Please try a valid number!!!")
@@ -89,38 +108,41 @@ def Show_History(history):
    else:
       for transaction in history:
          print(transaction)
+
+
+type_word(password)
       
 
 while True:
 
 
-    print("####### MINE BANK ######3")
-    print("\n1 - See balance")
-    print("2 - Deposit")
-    print("3 - Withdraw")
-    print("4 - Transaction history")
-    print("5 - transfer")
-    print("6 - Exit")
+         print("####### MINE BANK ######3")
+         print("\n1 - See balance")
+         print("2 - Deposit")
+         print("3 - Withdraw")
+         print("4 - Transaction history")
+         print("5 - transfer")
+         print("6 - Exit")
 
-    option = input("Choose: ")
+         option = input("Choose: ")
 
-    if option == "1":
-       Show_Balance(balance)
+         if option == "1":
+            Show_Balance(balance)
 
-    elif option == "2":
-      balance =  Deposit(balance,history)
+         elif option == "2":
+            balance =  Deposit(balance,history)
 
-    elif option == "3":
-        balance = Withdraw(balance, history)
+         elif option == "3":
+           balance = Withdraw(balance, history)
 
-    elif option == "4":
-       Show_History(history)
+         elif option == "4":
+           Show_History(history)
 
-    elif option == "5":
-        balance, seccond_account = transfer(balance, seccond_account, history)
+         elif option == "5":
+               balance, seccond_account = transfer(balance, seccond_account, history)
 
-    elif option == "6":
-       print("End of transaction")
-    else:
-        print("Error...")
-        break
+         elif option == "6":
+              print("End of transaction")
+         else:
+            print("Error...")
+            break
